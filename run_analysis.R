@@ -1,6 +1,20 @@
 library(plyr)
 library(data.table)
 
+
+fileURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+zipfile <- "getdata-projectfiles-UCI HAR Dataset.zip"
+destDir <- "UCI HAR Dataset"
+
+if (!file.exists(destDir)) {
+  if(!file.exists(zipfile)) {
+    download.file(fileURL, destfile=zipfile)
+  }
+  unzip(zipfile)
+}
+
+setwd("./UCI HAR Dataset")
+
 #merge the data
 sub_Train = read.table('./train/subject_train.txt',header=FALSE)
 x_Train = read.table('./train/x_train.txt',header=FALSE)
