@@ -28,15 +28,10 @@ x_Data <- rbind(x_Train, x_Test)
 y_Data <- rbind(y_Train, y_Test)
 sub_Data <- rbind(sub_Train, sub_Test)
 
-dim(x_Data)
-dim(y_Data)
-dim(sub_Data)
-
 #extract mean and std deviation
 x_Data_mean_std <- x_Data[, grep("-(mean|std)\\(\\)", read.table("features.txt")[, 2])]
 names(x_Data_mean_std) <- read.table("features.txt")[grep("-(mean|std)\\(\\)", read.table("features.txt")[, 2]), 2] 
 View(x_Data_mean_std)
-dim(x_Data_mean_std)
 
 #Set the activy names
 y_Data[, 1] <- read.table("activity_labels.txt")[y_Data[, 1], 2]
@@ -68,7 +63,6 @@ names(combined_Data) <- gsub('Freq$',"Frequency",names(combined_Data))
 View(combined_Data)
 
 #create the tidy data and save
-names(combined_Data)
 tidy_Data<-aggregate(. ~Subject + Activity, combined_Data, mean)
 tidy_Data<-tidy_Data[order(tidy_Data$Subject,tidy_Data$Activity),]
 write.table(tidy_Data, file = "CourseProjectTidyData.txt",row.name=FALSE)
