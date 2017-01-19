@@ -6,7 +6,7 @@ The run_analysis.R script does the following:
 Sets the libaries necessary.
 Downloads the dataset from the url if it does not exist.
 Merges the data from the text files.
-Extracts the mean and standradd deviations.
+Extracts the mean and standard deviations.
 Sets the activity names.
 Combines the data into a single data set. 
 Define descriptive names for the variables.
